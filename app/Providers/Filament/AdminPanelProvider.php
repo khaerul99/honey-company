@@ -35,6 +35,16 @@ class AdminPanelProvider extends PanelProvider
     {
         $setting = \App\Models\Setting::find(1);
 
+        $logoUrl = asset('favicon.ico'); 
+
+        if ($setting && $setting->logo && !str_contains($setting->logo, 'livewire-file')) {
+            try {
+                $logoUrl = Storage::disk('cloudinary')->url($setting->logo);
+            } catch (\Exception $e) {
+                $logoUrl = asset('favicon.ico');
+            }
+        }
+
         return $panel
             ->default()
             ->id('admin')

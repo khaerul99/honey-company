@@ -5,7 +5,7 @@
     <div class="relative min-h-[600px] lg:min-h-[500px] lg:aspect-[21/9] flex items-center px-6 lg:px-20 py-20">
         
         <div class="absolute inset-0">
-            <img src="{{ Storage::url($hero->image) }}" class="w-full h-full object-cover" alt="{{ $hero->title }}">
+            <img src="{{ $hero->image }}" class="w-full h-full object-cover" alt="{{ $hero->title }}">
             {{-- Gradient hitam transparan --}}
             <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/50 to-transparent"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent lg:hidden"></div>

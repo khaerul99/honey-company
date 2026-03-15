@@ -7,6 +7,8 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 
+use Illuminate\Support\Facades\Storage;
+
 use Filament\Schemas\Components\Section;
 
 class GalleryForm
@@ -28,7 +30,11 @@ class GalleryForm
                             ->disk('cloudinary')
                             ->directory('galleries') 
                             ->visibility('cloudinary')
-                            ->preserveFilenames()
+                            ->dehydrateStateUsing(function ($state) {
+                                if (!$state) return null;
+                                if (str_starts_with($state, 'http')) return $state;
+                                return Storage::disk('cloudinary')->url($state);
+                            })
                             ->maxSize(2048)
                             ->required()
                             ->columnSpanFull(),

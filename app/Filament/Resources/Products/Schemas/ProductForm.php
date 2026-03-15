@@ -13,6 +13,8 @@ use Filament\Forms\Set;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Str;
 
+use Illuminate\Support\Facades\Storage;
+
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Section;
 
@@ -72,7 +74,11 @@ class ProductForm
                                 ->disk('cloudinary')
                                 ->directory('products')
                                 ->visibility('cloudinary')
-                                ->preserveFilenames()
+                                ->dehydrateStateUsing(function ($state) {
+                                    if (!$state) return null;
+                                    if (str_starts_with($state, 'http')) return $state;
+                                    return Storage::disk('cloudinary')->url($state);
+                                })
                                 ->maxSize(2048)
                                 ->columnSpanFull(),
 

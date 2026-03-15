@@ -7,6 +7,8 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 
+use Illuminate\Support\Facades\Storage;
+
 use Filament\Schemas\Components\Section;
 
 class SocialMediaForm
@@ -34,7 +36,11 @@ class SocialMediaForm
                         ->acceptedFileTypes(['image/*'])
                         ->directory('social_media')
                         ->visibility('cloudinary')
-                        ->preserveFilenames()
+                        ->dehydrateStateUsing(function ($state) {
+                            if (!$state) return null;
+                            if (str_starts_with($state, 'http')) return $state;
+                            return Storage::disk('cloudinary')->url($state);
+                        })
                         ->maxSize(1024) 
                         ->nullable(),
 

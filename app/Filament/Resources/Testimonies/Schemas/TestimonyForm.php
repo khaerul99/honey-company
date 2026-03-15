@@ -28,7 +28,11 @@ class TestimonyForm
                         ->acceptedFileTypes(['image/*'])
                         ->directory('testimonies')
                         ->visibility('cloudinary')
-                        ->preserveFilenames(),
+                        ->dehydrateStateUsing(function ($state) {
+                            if (!$state) return null;
+                            if (str_starts_with($state, 'http')) return $state;
+                            return Storage::disk('cloudinary')->url($state);
+                        }),
                 ])->columns(1),
 
             Section::make('Isi Testimoni')->schema([

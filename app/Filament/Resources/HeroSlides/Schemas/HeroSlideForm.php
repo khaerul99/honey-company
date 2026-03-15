@@ -8,6 +8,8 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 
+use Illuminate\Support\Facades\Storage;
+
 use Filament\Schemas\Components\Section;
 
 class HeroSlideForm
@@ -40,7 +42,11 @@ class HeroSlideForm
                             ->directory('hero-slides')
                             ->visibility('public')
                             ->maxSize(5120)
-                            ->preserveFilenames()
+                            ->dehydrateStateUsing(function ($state) {
+                                if (!$state) return null;
+                                if (str_starts_with($state, 'http')) return $state;
+                                return Storage::disk('cloudinary')->url($state);
+                            })
                             ->imageCropAspectRatio('16:9')
                             ->required()
                             ->columnSpanFull(),

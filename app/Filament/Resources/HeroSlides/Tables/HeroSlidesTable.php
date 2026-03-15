@@ -21,8 +21,8 @@ class HeroSlidesTable
             ->columns([
                 ImageColumn::make('image')
                     ->label('Gambar Slide')
-                    ->disk('public')
-                    ->visibility('public'),
+                    ->disk('cloudinary')
+                    ->visibility('cloudinary'),
                 TextColumn::make('title')
                     ->label('Judul Slide')
                     ->searchable(),

@@ -67,7 +67,7 @@ class AdminPanelProvider extends PanelProvider
                 ->shouldShowAvatarForm() 
         ])
             ->favicon($logoUrl)
-            ->brandLogo($logoUrl)
+            ->brandLogo(fn () => view('filament.admin.logo', ['setting' => $setting]))
             ->brandName($setting?->site_name ?? 'Honey Lebah')
             ->brandLogoHeight('2.5rem')
             ->navigationGroups([

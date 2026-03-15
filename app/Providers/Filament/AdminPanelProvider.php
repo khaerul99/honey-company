@@ -35,15 +35,7 @@ class AdminPanelProvider extends PanelProvider
     {
         $setting = \App\Models\Setting::find(1);
 
-        $logoUrl = asset('favicon.ico'); 
-
-        if ($setting && $setting->logo && !str_contains($setting->logo, 'livewire-file')) {
-            try {
-                $logoUrl = Storage::disk('cloudinary')->url($setting->logo);
-            } catch (\Exception $e) {
-                $logoUrl = asset('favicon.ico');
-            }
-        }
+      
 
         return $panel
             ->default()
@@ -66,7 +58,7 @@ class AdminPanelProvider extends PanelProvider
                 ->shouldShowBrowserSessionsForm() 
                 ->shouldShowAvatarForm() 
         ])
-            ->favicon($logoUrl)
+            ->favicon($setting && $setting->logo ? Storage::disk('cloudinary')->url($setting->logo) : asset('favicon.ico'))
             ->brandLogo(fn () => view('filament.admin.logo', ['setting' => $setting->logo ?? null]))
             ->brandName($setting?->site_name ?? 'Honey Lebah')
             ->brandLogoHeight('2.5rem')

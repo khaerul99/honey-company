@@ -15,7 +15,7 @@
             <div class="group relative flex flex-col items-start">
                 {{-- Image Box --}}
                 <div class="relative w-full aspect-video rounded-[2.5rem] overflow-hidden bg-slate-100 mb-8 border border-slate-50 shadow-sm transition-all duration-700 group-hover:shadow-2xl group-hover:shadow-amber-500/10 group-hover:-translate-y-2">
-                    <img src="{{ asset('storage/' . $content->image) }}" 
+                    <img src="{{ Storage::url($content->image) }}" 
                          class="w-full h-full object-cover transition duration-700 group-hover:scale-110" 
                          alt="{{ $content->title }}">
                     

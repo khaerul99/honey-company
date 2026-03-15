@@ -19,8 +19,11 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Filament\AvatarProviders\UiAvatarsProvider;
+use Filament\Navigation\MenuItem;
 
 use Filament\Forms\Components\FileUpload;
+
+use Joaopaulolndev\FilamentEditProfile\Pages\EditProfilePage;
 
 use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
 
@@ -34,7 +37,12 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->profile()
+            ->userMenuItems([
+            'profile' => MenuItem::make()
+                ->label(fn() => auth()->user()->name) 
+                ->url(fn (): string => EditProfilePage::getUrl()) 
+                ->icon('heroicon-m-user-circle'),
+            ])
             ->login()
             ->colors([
                 'primary' => Color::Amber,
@@ -42,13 +50,9 @@ class AdminPanelProvider extends PanelProvider
            ->plugins([
             FilamentEditProfilePlugin::make()
                 ->slug('my-profile')
-                ->setTitle('My Profile')
-                ->setNavigationLabel('My Profile')
-                ->setNavigationGroup('Settings')
-                ->setIcon('heroicon-o-user')
+                ->shouldRegisterNavigation(false)
                 ->shouldShowBrowserSessionsForm() 
                 ->shouldShowAvatarForm() 
-                ->shouldShowAvatarForm()
         ])
             ->brandLogo(fn () => view('filament.admin.logo', ['setting' => $setting]))
             ->brandName($setting?->site_name ?? 'Honey Lebah')

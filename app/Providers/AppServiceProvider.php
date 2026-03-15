@@ -8,6 +8,7 @@ use App\Models\Blog;
 use App\Models\Post;
 use App\Models\Setting;
 use App\Models\SocialMedia;
+use Illuminate\Support\Facades\Http;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,11 +33,19 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
 
+    if (app()->environment('local')) {
+        Http::macro('cloudinary', function () {
+            return Http::withOptions([
+                'verify' => false,
+            ]);
+        });
+    }
+
         if (config('app.env') === 'production') {
             URL::forceScheme('https');
         }
 
-        
+
         config(['cloudinary.cloud' => [
         'cloud_name' => 'daqcfthk1',
         'api_key'    => '276479617617579',

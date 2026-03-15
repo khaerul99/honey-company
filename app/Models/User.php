@@ -8,13 +8,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use Illuminate\Support\Facades\Storage;
+
+use Filament\Models\Contracts\HasAvatar;
+
 use Filament\Models\Contracts\FilamentUser; 
 use Filament\Panel;
 
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable implements FilamentUser, HasAvatar
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
+
 
 
     public function canAccessPanel(Panel $panel): bool
@@ -22,6 +27,11 @@ class User extends Authenticatable implements FilamentUser
        
         return true; 
     }
+
+    public function getFilamentAvatarUrl(): ?string
+{
+    return $this->avatar_url ? Storage::disk('cloudinary')->url($this->avatar_url) : null;
+}
 
     /**
      * The attributes that are mass assignable.
@@ -32,6 +42,7 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
+        'avatar_url',
     ];
 
     /**

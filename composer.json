@@ -9,6 +9,7 @@
         "php": "^8.2",
         "cloudinary-labs/cloudinary-laravel": "^3.0",
         "filament/filament": "^5.3",
+        "joaopaulolndev/filament-edit-profile": "*",
         "laravel/framework": "^12.0",
         "laravel/pail": "^1.2",
         "laravel/tinker": "^2.10.1",

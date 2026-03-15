@@ -18,6 +18,11 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Filament\AvatarProviders\UiAvatarsProvider;
+
+use Filament\Forms\Components\FileUpload;
+
+use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -29,10 +34,22 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->profile()
             ->login()
             ->colors([
                 'primary' => Color::Amber,
             ])
+           ->plugins([
+            FilamentEditProfilePlugin::make()
+                ->slug('my-profile')
+                ->setTitle('My Profile')
+                ->setNavigationLabel('My Profile')
+                ->setNavigationGroup('Settings')
+                ->setIcon('heroicon-o-user')
+                ->shouldShowBrowserSessionsForm() 
+                ->shouldShowAvatarForm() 
+                ->shouldShowAvatarForm()
+        ])
             ->brandLogo(fn () => view('filament.admin.logo', ['setting' => $setting]))
             ->brandName($setting?->site_name ?? 'Honey Lebah')
             ->brandLogoHeight('2.5rem')
@@ -40,7 +57,7 @@ class AdminPanelProvider extends PanelProvider
                 'Manajemen Produk',
                 'Manajemen Konten',
             ])
-            
+            ->defaultAvatarProvider(\Filament\AvatarProviders\UiAvatarsProvider::class)
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([

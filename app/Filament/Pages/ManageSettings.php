@@ -47,7 +47,9 @@ class ManageSettings extends Page implements HasForms, HasActions
             ->schema([
                 Section::make('Identitas Brand')
                     ->schema([
-                        FileUpload::make('logo')->image()->disk('cloudinary')->directory('settings')->dehydrateStateUsing(function ($state) {
+                        FileUpload::make('logo')->image()->disk('cloudinary')->directory('settings')->formatStateUsing(function ($state) {
+                            return $state; 
+                            })->dehydrateStateUsing(function ($state) {
                             if (!$state) return null;
                             if (str_starts_with($state, 'http')) return $state;
                             return Storage::disk('cloudinary')->url($state);

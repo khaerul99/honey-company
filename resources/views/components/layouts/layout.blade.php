@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    @if(isset($setting) && $setting->logo)
+        <link rel="icon" type="image/png" href="{{ $setting->logo }}">
+    @else
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    @endif
+    
     <title>{{ $setting->site_name ?? 'Honey Mood' }} - Madu Murni Berkualitas</title>
     
     @vite(['resources/css/app.css', 'resources/js/app.js'])

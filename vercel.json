@@ -15,6 +15,7 @@
     "env": {
        "APP_ENV": "production",
         "APP_DEBUG": "true",
+        "ASSET_URL": "https://honey-company.vercel.app",
         "VIEW_COMPILED_PATH": "/tmp",
         "SESSION_DRIVER": "cookie",
         "LOG_CHANNEL": "stderr"

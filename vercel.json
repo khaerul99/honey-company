@@ -16,6 +16,7 @@
         }
     ],
     "env": {
+        "APP_KEY": "@app_key",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",

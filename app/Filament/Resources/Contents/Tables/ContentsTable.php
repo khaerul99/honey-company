@@ -23,6 +23,8 @@ class ContentsTable
                 //
                 ImageColumn::make('image')
                     ->label('Gambar')
+                    ->disk('cloudinary')
+                    ->visibility('cloudinary')
                     ->square(),
 
                 TextColumn::make('title')

@@ -21,6 +21,8 @@ class GalleriesTable
                ImageColumn::make('image')
                     ->label('Foto')
                     ->square()
+                    ->disk('cloudinary')
+                    ->visibility('cloudinary')
                     ->size(80), 
 
                 TextColumn::make('title')

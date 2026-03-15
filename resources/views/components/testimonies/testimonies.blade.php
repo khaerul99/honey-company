@@ -28,7 +28,7 @@
 
                     <div class="flex items-center gap-4">
                         @if($item->photo)
-                            <img src="{{ Storage::url($item->photo) }}" alt="{{ $item->name }}" class="w-12 h-12 rounded-full object-cover border-2 border-amber-200">
+                            <img src="{{ $item->photo }}" alt="{{ $item->name }}" class="w-12 h-12 rounded-full object-cover border-2 border-amber-200">
                         @else
                             <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 font-bold">
                                 {{ substr($item->name, 0, 1) }}

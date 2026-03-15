@@ -21,6 +21,9 @@ class TestimoniesTable
             ->columns([
                 
             ImageColumn::make('photo')
+                ->label('Foto')
+                ->disk('cloudinary')
+                ->visibility('cloudinary')
                 ->circular(),
             TextColumn::make('name')
                 ->searchable()

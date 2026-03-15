@@ -22,6 +22,8 @@ class SocialMediaTable
                 ImageColumn::make('icon')
                     ->label('Icon')
                     ->square()
+                    ->disk('cloudinary')
+                    ->visibility('cloudinary')
                     ->size(40),
 
                 TextColumn::make('platform_name')

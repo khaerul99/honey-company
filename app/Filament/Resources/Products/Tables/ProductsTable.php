@@ -20,6 +20,8 @@ class ProductsTable
             ->columns([
                 ImageColumn::make('image')
                     ->label('Foto')
+                    ->disk('cloudinary')
+                    ->visibility('cloudinary')
                     ->circular(), 
 
                 TextColumn::make('name')

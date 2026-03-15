@@ -13,6 +13,8 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Notifications\Notification;
 use Filament\Forms\Concerns\InteractsWithForms;
 
+use Illuminate\Support\Facades\Storage;
+
 use Filament\Actions\Contracts\HasActions;
 use Filament\Actions\Concerns\InteractsWithActions;
 
@@ -58,7 +60,11 @@ class ManageSettings extends Page implements HasForms, HasActions
 
                 Section::make('Tentang Kami')
                     ->schema([
-                        FileUpload::make('about_us_image')->image()->disk('cloudinary')->directory('settings'),
+                        FileUpload::make('about_us_image')->image()->disk('cloudinary')->directory('settings')->dehydrateStateUsing(function ($state) {
+                            if (!$state) return null;
+                            if (str_starts_with($state, 'http')) return $state;
+                            return Storage::disk('cloudinary')->url($state);
+                        }),
                         RichEditor::make('about_us')->columnSpanFull()->label('Deskripsi Tentang Kami'),
                     ]),
             ])

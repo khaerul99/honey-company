@@ -21,6 +21,8 @@ class PostsTable
                 ImageColumn::make('image')
                     ->label('Cover')
                     ->square()
+                    ->disk('cloudinary')
+                    ->visibility('cloudinary')
                     ->size(60),
 
                 TextColumn::make('title')

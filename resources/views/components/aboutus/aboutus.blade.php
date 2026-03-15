@@ -6,7 +6,7 @@
         <div class="w-full lg:w-1/2 relative">
             {{-- Foto Utama --}}
             <div class="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white dark:border-slate-800">
-                <img src="{{ Storage::url($setting?->about_us_image ?? 'default-about-us.jpg') }}" 
+                <img src="{{ $setting?->about_us_image ?? 'default-about-us.jpg' }}" 
                      alt="Peternakan Madu Honey Lebah" 
                      class="w-full h-100 lg:h-150 object-cover hover:scale-105 transition duration-1000">
             </div>

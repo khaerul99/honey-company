@@ -8,7 +8,6 @@
             <p class="text-slate-500 mt-2 text-sm">Kualitas murni dari peternakan kami.</p>
         </div>
         
-        {{-- Tombol untuk ke halaman produk (Desktop View) --}}
         <a href="{{ route('products.index') }}" class="hidden md:flex items-center gap-2 font-bold text-slate-900 hover:text-amber-600 transition group">
             Lihat Semua Produk
             <div class="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-amber-500 group-hover:border-amber-500 group-hover:text-white transition-all">
@@ -17,7 +16,6 @@
         </a>
     </div>
 
-    {{-- Grid Produk --}}
    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-8">
         @foreach($products as $product)
         <div class="group relative bg-white rounded-4xl p-3 border border-slate-100 hover:shadow-2xl transition-all duration-500 cursor-pointer btn-detail"
@@ -28,7 +26,7 @@
              data-category="{{ $product->category->name }}">
             {{-- Content Card --}}
             <div class="relative aspect-square rounded-[1.5rem] overflow-hidden bg-slate-50 mb-4">
-                <img src="{{ Storage::url($product->image) }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <img src="{{ $product->image }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                 <span class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-xl text-[10px] font-black uppercase tracking-wider text-slate-800 shadow-sm">
                     {{ $product->category->name }}
                 </span>

@@ -21,7 +21,7 @@
             </div>
 
             <div class="rounded-[2.5rem] overflow-hidden shadow-2xl mb-16 aspect-video">
-                <img src="{{ asset('storage/' . $blog->image) }}" class="w-full h-full object-cover">
+                <img src="{{ $blog->image }}" class="w-full h-full object-cover">
             </div>
 
            <div class="prose prose-amber max-w-none prose-lg 

@@ -18,7 +18,7 @@
                 <div class="group bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:border-amber-200 shadow-sm hover:shadow-2xl hover:shadow-amber-500/10 transition-all duration-500 flex flex-col h-full">
                     
                     <div class="relative overflow-hidden aspect-[4/5]">
-                        <img src="{{ Storage::url($product->image) }}" 
+                        <img src="{{ $product->image }}" 
                              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
                              alt="{{ $product->name }}">
                         

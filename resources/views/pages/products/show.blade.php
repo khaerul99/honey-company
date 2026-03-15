@@ -15,7 +15,7 @@
                 <div class="lg:col-span-6">
                     <div class="sticky top-28">
                         <div class="relative group rounded-[2.5rem] overflow-hidden bg-gray-50 border border-gray-100">
-                            <img src="{{ Storage::url($product->image) }}" 
+                            <img src="{{ $product->image }}" 
                                  alt="{{ $product->name }}" 
                                  class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105">
                             

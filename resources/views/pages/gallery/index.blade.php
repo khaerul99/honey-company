@@ -15,9 +15,9 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach($galleries as $item)
                <div class="group relative overflow-hidden rounded-[2.5rem] aspect-square bg-gray-100 shadow-sm cursor-pointer gallery-item" 
-                    onclick="openFullImage('{{ Storage::url($item->image) }}')">
+                    onclick="openFullImage('{{ $item->image }}')">
                     
-                    <img src="{{ Storage::url($item->image) }}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <img src="{{ $item->image }}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
 
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-10">
                         <span class="text-amber-400 text-xs font-bold uppercase tracking-[0.2em] mb-2">{{ $item->category ?? 'Activity' }}</span>

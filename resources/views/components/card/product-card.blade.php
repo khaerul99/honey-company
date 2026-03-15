@@ -28,7 +28,7 @@
              data-category="{{ $product->category->name }}">
             {{-- Content Card --}}
             <div class="relative aspect-square rounded-[1.5rem] overflow-hidden bg-slate-50 mb-4">
-                <img src="{{ asset('storage/' . $product->image) }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <img src="{{ Storage::url($product->image) }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                 <span class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-xl text-[10px] font-black uppercase tracking-wider text-slate-800 shadow-sm">
                     {{ $product->category->name }}
                 </span>

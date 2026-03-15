@@ -5,7 +5,7 @@
                 <div class="lg:w-1/2 relative">
                     <div class="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-700 aspect-[4/5]">
                         {{-- Kamu bisa pakai foto peternakan madu yang estetik di sini --}}
-                        <img src="{{ asset('storage/' . ($setting?->about_us_image ?? 'default-about-us.jpg')) }}" alt="Tentang Honey Mood" class="w-full h-full object-cover">
+                        <img src="{{ Storage::url($setting?->about_us_image ?? 'default-about-us.jpg') }}" alt="Tentang Honey Mood" class="w-full h-full object-cover">
                     </div>
                     <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-amber-100 rounded-[2rem] -z-10 rotate-12"></div>
                 </div>

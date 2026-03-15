@@ -19,7 +19,7 @@
             @forelse($blogs as $blog)
             <div class="group cursor-pointer" onclick="window.location='{{ route('blog.show', $blog->slug) }}'">
                 <div class="relative aspect-video rounded-[2rem] overflow-hidden mb-6 border border-gray-100 shadow-sm">
-                    <img src="{{ asset('storage/' . $blog->image) }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <img src="{{ Storage::url($blog->image) }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                 </div>
                 <div>
                     <span class="text-xs font-bold text-amber-600 uppercase tracking-widest mb-3 block">Honey Mood Journal</span>

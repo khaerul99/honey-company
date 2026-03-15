@@ -20,7 +20,7 @@
                 @foreach($blogs as $item)
                 <article class="group relative">
                     <div class="relative rounded-[2.5rem] overflow-hidden mb-8 aspect-[4/5] shadow-sm transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-amber-500/10">
-                        <img src="{{ asset('storage/' . $item->image) }}" 
+                        <img src="{{ Storage::url($item->image) }}" 
                              class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110" 
                              alt="{{ $item->title }}">
                         

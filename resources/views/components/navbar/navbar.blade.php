@@ -3,7 +3,7 @@
 <nav class="hidden md:flex sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md items-center justify-between py-6 px-10 max-w-7xl mx-auto border-b border-slate-100">
     <div class="flex items-center gap-3">
         @if($setting?->logo)
-            <img src="{{ Storage::url($setting->logo) }}" alt="Logo" class="h-10 w-auto">
+            <img src="{{ $setting->logo }}" alt="Logo" class="h-10 w-auto">
         @endif
         <span class="text-2xl font-bold tracking-tighter text-slate-900">
             {{ $setting?->site_name ?? 'Honey' }}

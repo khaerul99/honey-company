@@ -4,7 +4,7 @@
     @endphp
 
     @if($setting?->logo)
-        <img src="{{ asset('storage/' . $setting->logo) }}" alt="Logo" style="height: 40px; width: auto;" class="rounded">
+        <img src="{{  $setting->logo }}" alt="Logo" style="height: 40px; width: auto;" class="rounded">
     @endif
 
     <div class="flex flex-col line-height-1">

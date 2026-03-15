@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 use App\Models\Blog;
 use App\Models\Post;
 use App\Models\Setting;
@@ -30,6 +31,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+        if (config('app.env') === 'production') {
+            URL::forceScheme('https');
+        }
+
+        
         config(['cloudinary.cloud' => [
         'cloud_name' => 'daqcfthk1',
         'api_key'    => '276479617617579',

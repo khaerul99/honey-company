@@ -58,7 +58,7 @@ class AdminPanelProvider extends PanelProvider
                 ->shouldShowBrowserSessionsForm() 
                 ->shouldShowAvatarForm() 
         ])
-            ->favicon(fn () => view('filament.admin.logo', ['setting' => $setting->logo ?? null]))
+            ->favicon($setting && $setting->logo || asset('favicon.ico'))
             ->brandLogo(fn () => view('filament.admin.logo', ['setting' => $setting->logo ?? null]))
             ->brandName($setting?->site_name ?? 'Honey Lebah')
             ->brandLogoHeight('2.5rem')

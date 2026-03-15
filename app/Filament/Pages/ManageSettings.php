@@ -56,6 +56,23 @@ class ManageSettings extends Page implements HasForms, HasActions
                         }),
                         TextInput::make('site_name')->label('Nama Website')->required(),
                     ])->columns(2),
+                Section::make('Search Engine Optimization (SEO)')
+                        ->description('Pengaturan agar website mudah ditemukan di Google')
+                        ->schema([
+                            TextInput::make('seo_title')
+                                ->label('Meta Title')
+                                ->placeholder('Contoh: Honey Lebah - Madu Murni 100% Asli Alam')
+                                ->columnSpanFull(),
+                            Textarea::make('seo_description')
+                                ->label('Meta Description')
+                                ->placeholder('Jelaskan singkat tentang toko kamu...')
+                                ->rows(3)
+                                ->columnSpanFull(),
+                            TextInput::make('seo_keywords')
+                                ->label('Keywords (Pisahkan dengan koma)')
+                                ->placeholder('madu asli, madu murni, honey lebah, herbal')
+                                ->columnSpanFull(),
+                        ])->collapsed(),
 
                 Section::make('Informasi Kontak')
                     ->schema([
@@ -73,6 +90,7 @@ class ManageSettings extends Page implements HasForms, HasActions
                         }),
                         RichEditor::make('about_us')->columnSpanFull()->label('Deskripsi Tentang Kami'),
                     ]),
+
             ])
             ->statePath('data');
     }

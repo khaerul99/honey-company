@@ -9,8 +9,17 @@
     @else
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     @endif
-    
+
     <title>{{ $setting->site_name ?? 'Honey Mood' }} - Madu Murni Berkualitas</title>
+
+    <meta name="description" content="{{ $setting->seo_description }}">
+    <meta name="keywords" content="{{ $setting->seo_keywords }}">
+
+    {{-- tampilan pas di-share ke WA/Sosmed--}}
+    <meta property="og:title" content="{{ $setting->seo_title ?? $setting->site_name }}">
+    <meta property="og:description" content="{{ $setting->seo_description }}">
+    <meta property="og:image" content="{{ asset($setting->logo) }}">
+    <meta property="og:type" content="website">
     
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 

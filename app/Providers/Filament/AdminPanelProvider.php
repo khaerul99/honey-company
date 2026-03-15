@@ -23,6 +23,8 @@ use Filament\Navigation\MenuItem;
 
 use Filament\Forms\Components\FileUpload;
 
+use Illuminate\Support\Facades\Storage;
+
 use Joaopaulolndev\FilamentEditProfile\Pages\EditProfilePage;
 
 use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
@@ -54,6 +56,7 @@ class AdminPanelProvider extends PanelProvider
                 ->shouldShowBrowserSessionsForm() 
                 ->shouldShowAvatarForm() 
         ])
+            ->favicon($setting && $setting->logo ? Storage::url($setting->logo) : asset('favicon.ico'))
             ->brandLogo(fn () => view('filament.admin.logo', ['setting' => $setting]))
             ->brandName($setting?->site_name ?? 'Honey Lebah')
             ->brandLogoHeight('2.5rem')

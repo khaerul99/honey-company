@@ -60,7 +60,7 @@
                         <a href="{{ route('blog.show', $item->slug) }}" class="inline-flex items-center gap-3 group/link">
                             <span class="text-sm font-black uppercase tracking-widest text-gray-900 dark:text-white group-hover/link:text-amber-600 dark:group-hover/link:text-amber-500 transition-colors">Read Article</span>
                             <div class="w-10 h-10 rounded-full border border-gray-100 dark:border-slate-800 flex items-center justify-center group-hover/link:bg-amber-500 dark:group-hover/link:bg-amber-500 group-hover/link:border-amber-500 group-hover/link:text-white dark:group-hover/link:text-slate-900 transition-all duration-300">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-4 h-4 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                                 </svg>
                             </div>

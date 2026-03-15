@@ -37,7 +37,7 @@ class PostResource extends Resource
 
     public static function getNavigationSort(): ?int
     {
-        return 2; 
+        return 4; 
     }
 
     public static function form(Schema $schema): Schema

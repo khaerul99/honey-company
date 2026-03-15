@@ -37,6 +37,11 @@ class ContentResource extends Resource
         return 'Konten Halaman';
     }
 
+    public static function getNavigationSort(): ?int
+    {
+        return 2; 
+    }
+
     public static function form(Schema $schema): Schema
     {
         return ContentForm::configure($schema)

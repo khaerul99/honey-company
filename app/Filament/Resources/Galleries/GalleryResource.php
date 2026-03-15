@@ -30,10 +30,17 @@ class GalleryResource extends Resource
         return 'Manajemen Konten';
     }
 
-    public static function getModelLabel(): string
+    public static function getPluralModelLabel(): string
     {
         return 'Galeri Foto';
     }
+
+     public static function getNavigationSort(): ?int
+    {
+        return 3; 
+    }
+
+
 
     public static function form(Schema $schema): Schema
     {

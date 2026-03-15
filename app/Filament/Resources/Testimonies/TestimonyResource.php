@@ -35,6 +35,12 @@ class TestimonyResource extends Resource
         return 'Testimony';
     }
 
+    public static function getNavigationSort(): ?int
+    {
+        return 5; 
+    }
+
+
     public static function form(Schema $schema): Schema
     {
         return TestimonyForm::configure($schema);

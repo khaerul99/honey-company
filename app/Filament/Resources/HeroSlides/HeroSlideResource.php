@@ -38,6 +38,11 @@ class HeroSlideResource extends Resource
         return 'Hero Slide';
     }
 
+    public static function getNavigationSort(): ?int
+    {
+        return 1; 
+    }
+
     public static function form(Schema $schema): Schema
     {
         return HeroSlideForm::configure($schema)

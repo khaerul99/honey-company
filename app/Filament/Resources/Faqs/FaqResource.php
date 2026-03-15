@@ -37,6 +37,11 @@ class FaqResource extends Resource
         return 'Faqs';
     }
 
+    public static function getNavigationSort(): ?int
+    {
+        return 6; 
+    }
+
     public static function form(Schema $schema): Schema
     {
         return FaqForm::configure($schema)

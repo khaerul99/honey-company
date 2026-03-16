@@ -1,6 +1,6 @@
 
 @props(['testimonies'])
-<section class="py-20 bg-amber-50/50 dark:bg-slate-950/50 transition-colors duration-500">
+<section class="py-20 bg-amber-50/50 w-full dark:bg-slate-950/50 transition-colors duration-500">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Apa Kata Mereka?</h2>

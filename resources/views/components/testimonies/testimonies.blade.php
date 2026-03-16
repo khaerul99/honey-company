@@ -7,9 +7,11 @@
             <p class="text-gray-600 dark:text-slate-400 max-w-2xl mx-auto">Cerita manis dari pelanggan setia Honey Mood yang telah merasakan kemurnian madu asli kami.</p>
         </div>
 
-        <div class="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory hide-scrollbar">
+        <div class="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory hide-scrollbar" >
             @foreach($testimonies as $item)
-            <div  data-aos="zoom-in-up" data-aos-delay="{{ $index * 100 }}" class="min-w-[320px] md:min-w-[384px] snap-center bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-amber-100 dark:border-slate-800 hover:shadow-md dark:hover:shadow-amber-900/10 transition-all duration-300 relative">
+            <div  data-aos="zoom-in-up" 
+                    data-aos-delay="{{ $loop->index * 150 }}" 
+                    class="min-w-[320px] md:min-w-[384px] snap-center bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-amber-100 dark:border-slate-800 hover:shadow-md dark:hover:shadow-amber-900/10 transition-all duration-300 relative">
                 
                 <div class="absolute top-6 right-8 opacity-10">
                     <svg class="w-12 h-12 text-amber-600 dark:text-amber-500" fill="currentColor" viewBox="0 0 24 24">

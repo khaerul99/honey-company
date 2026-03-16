@@ -29,7 +29,7 @@ class TestimonyForm
                    Placeholder::make('current_photo')
                         ->label('Foto Saat Ini')
                         ->content(fn ($record) => $record?->photo 
-                            ? new \Illuminate\Support\HtmlString("
+                            ? new HtmlString("
                                 <div style='margin-bottom: 15px;'>
                                     <div style='
                                         width: 200px; 

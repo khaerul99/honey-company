@@ -35,9 +35,11 @@ class TestimonyForm
                         ->visible(fn ($record) => $record !== null),
                     FileUpload::make('photo')
                         ->image()
+                        ->disk('cloudinary')
                         ->acceptedFileTypes(['image/*'])
                         ->directory('testimonies')
                         ->visibility('cloudinary')
+                        ->checkFileExists(false)
                         ->formatStateUsing(fn ($state) => $state)
                         ->dehydrateStateUsing(function ($state) {
                             if (!$state) return null;

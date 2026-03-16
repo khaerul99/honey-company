@@ -40,13 +40,15 @@ class TestimonyForm
                         ->directory('testimonies')
                         ->visibility('cloudinary')
                         ->formatStateUsing(fn ($state) => $state)
-                        ->loadStateFromRelationships(false)
+                        
                         ->dehydrateStateUsing(function ($state) {
                             if (!$state) return null;
+                           
                             if (str_starts_with($state, 'http')) return $state;
+                           
                             return Storage::disk('cloudinary')->url($state);
                         }),
-                ])->columns(1),
+                        ])->columns(1),
 
             Section::make('Isi Testimoni')->schema([
                     Select::make('rating')

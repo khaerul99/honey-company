@@ -39,8 +39,8 @@ class TestimonyForm
                         ->acceptedFileTypes(['image/*'])
                         ->directory('testimonies')
                         ->visibility('cloudinary')
-                        ->checkFileExists(false)
                         ->formatStateUsing(fn ($state) => $state)
+                        ->loadStateFromRelationships(false)
                         ->dehydrateStateUsing(function ($state) {
                             if (!$state) return null;
                             if (str_starts_with($state, 'http')) return $state;

@@ -40,9 +40,11 @@ class TestimonyForm
                         ->directory('testimonies')
                         ->visibility('cloudinary')
                         ->afterStateHydrated(function (FileUpload $component, $state) {
+        
                             $component->state($state);
                         })
-                        ->dehydrateStateUsing(fn ($state) => $state),,
+                        ->dehydrateStateUsing(fn ($state) => $state),
+                        ])->columns(1),
 
             Section::make('Isi Testimoni')->schema([
                     Select::make('rating')

@@ -40,9 +40,9 @@ class HeroSlideForm
                             ->disk('cloudinary')
                             ->acceptedFileTypes(['image/*'])
                             ->directory('hero-slides')
-                            ->visibility('public')
+                            ->visibility('cloudinary')
                             ->maxSize(5120)
-                            ->formatStateUsing(fn ($state) => $state)
+                            ->preserveFilenames()
                             ->imageCropAspectRatio('16:9')
                             ->required()
                             ->columnSpanFull(),

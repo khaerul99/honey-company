@@ -7,7 +7,7 @@
             <p class="text-gray-600 dark:text-slate-400 max-w-2xl mx-auto">Cerita manis dari pelanggan setia Honey Mood yang telah merasakan kemurnian madu asli kami.</p>
         </div>
 
-        <div class="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory hide-scrollbar" >
+        <div class="max-w-7xl mx-auto flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory hide-scrollbar" >
             @foreach($testimonies as $item)
             <div  data-aos="zoom-in-up" 
                     data-aos-delay="{{ $loop->index * 150 }}" 

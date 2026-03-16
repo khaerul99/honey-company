@@ -29,7 +29,7 @@ class TestimonyForm
                     Placeholder::make('current_photo')
                         ->label('Foto Saat Ini')
                         ->content(fn ($record) => $record?->photo 
-                            ? new HtmlString("<img src='{$record->photo}' class='w-32 h-32 rounded-xl shadow-md object-cover'>")
+                            ? new HtmlString("<img src='{$record->photo}'  style='max-width: 200px; max-height: 200px; object-fit: cover; rounded: 8px; shadow: 0 4px 6px rgba(0, 0, 0, 0.1);' alt='Foto Testimoni'>")
                             : 'Belum ada foto'
                         )
                         ->visible(fn ($record) => $record !== null),

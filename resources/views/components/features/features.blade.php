@@ -1,6 +1,6 @@
 
 <section class="w-full mx-auto py-20 max-w-7xl px-6 bg-white dark:bg-slate-950 transition-colors duration-500">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
         
       
         <div class="flex flex-col items-center text-center group">

@@ -9,11 +9,11 @@
 
         <div class="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory hide-scrollbar">
             @foreach($testimonies as $item)
-            <div class="min-w-[320px] md:min-w-[384px] snap-center bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-amber-100 dark:border-slate-800 hover:shadow-md dark:hover:shadow-amber-900/10 transition-all duration-300 relative">
+            <div  data-aos="zoom-in-up" data-aos-delay="{{ $index * 100 }}" class="min-w-[320px] md:min-w-[384px] snap-center bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-amber-100 dark:border-slate-800 hover:shadow-md dark:hover:shadow-amber-900/10 transition-all duration-300 relative">
                 
                 <div class="absolute top-6 right-8 opacity-10">
                     <svg class="w-12 h-12 text-amber-600 dark:text-amber-500" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V13.5C14.017 14.3284 13.3454 15 12.517 15H12.017V21H14.017ZM4.017 21H6.017V15H5.517C4.68858 15 4.017 14.3284 4.017 13.5V9C4.017 8.44772 4.46472 8 5.017 8H9.017C9.56928 8 10.017 8.44772 10.017 9V15C10.017 15.5523 9.56928 16 9.017 16H6.017C4.91243 16 4.017 16.8954 4.017 18V21H4.017Z" />
+                        <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V13.5C14.017 14.3284 13.3454 15 12.517 15H₁₂.₀₁₇V₂₁H₁₄.₀₁₇ZM4.₀₁₇ ₂₁H6.₀₁₇V₁₅H5.5₁₇C4.68858 ₁₅ 4.₀₁₇ ₁₄.3284 4.₀₁₇ ₁₃.5V9C4.₀₁₇ 8.44772 4.46472 8 5.₀₁₇ 8H9.₀₁₇C9.56928 8 ¹⁰.₀¹⁷ 8.44772 ¹⁰.₀¹⁷ 9V¹⁵C¹⁰.₀¹⁷ ¹⁵.5523 9.56928 ¹⁶ 9.₀₁⁷ ¹⁶H6.₀₁⁷C4.9１２４３ ¹⁶ ４．０１７ １６．８９５４ ４．０１７ １８V₂₁H４．０１７Z" />
                     </svg>
                 </div>
 

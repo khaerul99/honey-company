@@ -27,6 +27,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
     </style>
@@ -41,6 +43,15 @@
 
     <x-sticky.sosmed :sosmeds="$sosmeds" />
     <x-footer :setting="$setting" />
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    AOS.init({
+        duration: 1000, 
+        once: true,    
+        offset: 100,    
+    });
+    </script>
 
 
 </body>

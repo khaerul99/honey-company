@@ -14,7 +14,7 @@
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent lg:hidden"></div>
         </div>
 
-        <div class="relative z-10 max-w-2xl">
+        <div data-aos="fade-right" data-aos-delay="200" class="relative z-10 max-w-2xl">
        
             <span class="inline-block px-4 py-1.5 mb-4 text-xs font-bold tracking-widest text-amber-400 uppercase bg-amber-400/10 border border-amber-400/20 rounded-full">
                 {{ $hero->subtitle ?? 'Murni & Alami' }}

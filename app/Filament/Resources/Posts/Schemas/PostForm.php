@@ -45,11 +45,7 @@ class PostForm
                         ->disk('cloudinary')
                         ->directory('posts') 
                         ->visibility('cloudinary')
-                        ->dehydrateStateUsing(function ($state) {
-                                if (!$state) return null;
-                                if (str_starts_with($state, 'http')) return $state;
-                                return Storage::disk('cloudinary')->url($state);
-                            })
+                        ->formatStateUsing(fn ($state) => $state)
                         ->maxSize(2048)
                         ->columnSpanFull(),
 

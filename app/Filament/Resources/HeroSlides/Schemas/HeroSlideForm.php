@@ -42,11 +42,7 @@ class HeroSlideForm
                             ->directory('hero-slides')
                             ->visibility('public')
                             ->maxSize(5120)
-                            ->dehydrateStateUsing(function ($state) {
-                                if (!$state) return null;
-                                if (str_starts_with($state, 'http')) return $state;
-                                return Storage::disk('cloudinary')->url($state);
-                            })
+                            ->formatStateUsing(fn ($state) => $state)
                             ->imageCropAspectRatio('16:9')
                             ->required()
                             ->columnSpanFull(),

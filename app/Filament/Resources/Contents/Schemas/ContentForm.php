@@ -32,11 +32,7 @@ class ContentForm
                             ->acceptedFileTypes(['image/*'])
                             ->directory('contents')
                             ->visibility('cloudinary')
-                            ->dehydrateStateUsing(function ($state) {
-                                if (!$state) return null;
-                                if (str_starts_with($state, 'http')) return $state;
-                                return Storage::disk('cloudinary')->url($state);
-                            })
+                            ->formatStateUsing(fn ($state) => $state)
                             ->required()
                             ->columnSpanFull(),
 

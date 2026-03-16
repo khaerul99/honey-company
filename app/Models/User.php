@@ -45,6 +45,21 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
         'avatar_url',
     ];
 
+     protected function avatarUrl(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value) {
+                if (!$value) return null;
+                if (str_starts_with($value, 'http')) {
+                    return $value;
+                }
+
+                return Storage::disk('cloudinary')->url($value);
+            },
+        );
+    }
+
+
     /**
      * The attributes that should be hidden for serialization.
      *

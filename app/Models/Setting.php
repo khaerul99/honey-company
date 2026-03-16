@@ -19,6 +19,36 @@ class Setting extends Model
         'address'
     ];
 
+        protected function logo(): Attribute
+        {
+            return Attribute::make(
+                get: function ($value) {
+                    
+                    if (!$value) return null;
+                    if (str_starts_with($value, 'http')) {
+                        return $value;
+                    }
+    
+                    return Storage::disk('cloudinary')->url($value);
+                },
+            );
+        }
+    
+        protected function aboutUsImage(): Attribute
+        {
+            return Attribute::make(
+                get: function ($value) {
+                    
+                    if (!$value) return null;
+                    if (str_starts_with($value, 'http')) {
+                        return $value;
+                    }
+    
+                    return Storage::disk('cloudinary')->url($value);
+                },
+            );
+        }
+
 
     protected static function booted()
     {

@@ -10,6 +10,21 @@ class Post extends Model
     //
     protected $fillable = ['title', 'slug', 'image', 'author', 'content', 'is_published'];
 
+     protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value) {
+                
+                if (!$value) return null;
+                if (str_starts_with($value, 'http')) {
+                    return $value;
+                }
+
+                return Storage::disk('cloudinary')->url($value);
+            },
+        );
+    }
+
     protected static function booted()
     {
         parent::booted();

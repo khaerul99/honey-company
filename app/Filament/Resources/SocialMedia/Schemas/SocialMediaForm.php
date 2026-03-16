@@ -36,11 +36,7 @@ class SocialMediaForm
                         ->acceptedFileTypes(['image/*'])
                         ->directory('social_media')
                         ->visibility('cloudinary')
-                        ->dehydrateStateUsing(function ($state) {
-                            if (!$state) return null;
-                            if (str_starts_with($state, 'http')) return $state;
-                            return Storage::disk('cloudinary')->url($state);
-                        })
+                        ->formatStateUsing(fn ($state) => $state)
                         ->maxSize(1024) 
                         ->nullable(),
 

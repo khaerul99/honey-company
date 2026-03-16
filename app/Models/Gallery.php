@@ -10,6 +10,20 @@ class Gallery extends Model
     //
     protected $fillable = ['title', 'image', 'is_active'];
 
+     protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value) {
+                
+                if (!$value) return null;
+                if (str_starts_with($value, 'http')) {
+                    return $value;
+                }
+
+                return Storage::disk('cloudinary')->url($value);
+            },
+        );
+    }
  
     protected static function booted()
     {

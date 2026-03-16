@@ -8,6 +8,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Placeholder;
+use Illuminate\Support\HtmlString;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -24,9 +26,15 @@ class TestimonyForm
                     TextInput::make('name')
                         ->label('Nama Pelanggan')
                         ->required(),
+                    Placeholder::make('current_photo')
+                        ->label('Foto Saat Ini')
+                        ->content(fn ($record) => $record?->photo 
+                            ? new HtmlString("<img src='{$record->photo}' class='w-32 h-32 rounded-xl shadow-md object-cover'>")
+                            : 'Belum ada foto'
+                        )
+                        ->visible(fn ($record) => $record !== null),
                     FileUpload::make('photo')
                         ->image()
-                        ->disk('cloudinary')
                         ->acceptedFileTypes(['image/*'])
                         ->directory('testimonies')
                         ->visibility('cloudinary')

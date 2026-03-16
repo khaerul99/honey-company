@@ -1,8 +1,8 @@
 @props(['setting'])
 
 <footer class="bg-white dark:bg-slate-950 border-t border-gray-100 dark:border-slate-800 pt-16 pb-8 transition-colors duration-500">
-    <div class="container mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+    <div class="container mx-auto px-6 max-w-7xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 ">
             
             <div class="space-y-6">
                 @if($setting?->logo)

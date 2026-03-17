@@ -42,7 +42,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path('admin')
+            ->path('rahasia-admin')
             ->userMenuItems([
             'profile' => MenuItem::make()
                 ->label(fn() => auth()->user()->name) 

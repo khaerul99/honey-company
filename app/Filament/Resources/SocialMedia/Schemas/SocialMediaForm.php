@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 
 use Filament\Schemas\Components\Section;
 
-use CodeWithPolas\FilamentCloudinary\Forms\Components\CloudinaryFileUpload;
+// use CodeWithPolas\FilamentCloudinary\Forms\Components\CloudinaryFileUpload;
 
 class SocialMediaForm
 {
@@ -68,21 +68,21 @@ class SocialMediaForm
                             )
                             ->visible(fn ($record) => $record !== null),
 
-                    CloudinaryFileUpload::make('icon')
-                        ->label('Upload Icon / Logo')
-                        ->directory('sosmed-icons') 
-                        ->required(),
-
-                    // FileUpload::make('icon')
+                    // CloudinaryFileUpload::make('icon')
                     //     ->label('Upload Icon / Logo')
-                    //     ->image()
-                    //     ->disk('cloudinary')
-                    //     ->acceptedFileTypes(['image/*'])
-                    //     ->directory('social_media')
-                    //     ->visibility('cloudinary')
-                    //     ->formatStateUsing(fn ($state) => $state)
-                    //     ->maxSize(1024) 
-                    //     ->nullable(),
+                    //     ->directory('sosmed-icons') 
+                    //     ->required(),
+
+                    FileUpload::make('icon')
+                        ->label('Upload Icon / Logo')
+                        ->image()
+                        ->disk('cloudinary')
+                        ->acceptedFileTypes(['image/*'])
+                        ->directory('social_media')
+                        ->visibility('cloudinary')
+                        ->formatStateUsing(fn ($state) => $state)
+                        ->maxSize(1024) 
+                        ->nullable(),
 
                     Toggle::make('is_active')
                         ->label('Tampilkan di Website?')

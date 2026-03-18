@@ -68,11 +68,6 @@ class SocialMediaForm
                             )
                             ->visible(fn ($record) => $record !== null),
 
-                    // CloudinaryFileUpload::make('icon')
-                    //     ->label('Upload Icon / Logo')
-                    //     ->directory('sosmed-icons') 
-                    //     ->required(),
-
                     FileUpload::make('icon')
                         ->label('Upload Icon / Logo')
                         ->image()
@@ -81,7 +76,8 @@ class SocialMediaForm
                         ->directory('social_media')
                         ->visibility('cloudinary')
                         ->formatStateUsing(fn ($state) => $state)
-                        ->maxSize(1024) 
+                        ->moveFiles() 
+                        ->preserveFilenames()
                         ->nullable(),
 
                     Toggle::make('is_active')

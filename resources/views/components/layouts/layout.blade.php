@@ -33,11 +33,11 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
     </style>
 </head>
-<body class="bg-white antialiased">
+<body class="bg-white dark:bg-slate-950 antialiased transition-colors duration-500">
 
     <x-navbar.navbar :setting="$setting" />
 
-    <main class="min-h-screen">
+    <main class="min-h-screen bg-white dark:bg-slate-950">
         {{ $slot }}
     </main>
 

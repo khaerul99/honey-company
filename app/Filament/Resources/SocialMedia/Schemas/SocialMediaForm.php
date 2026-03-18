@@ -72,13 +72,13 @@ class SocialMediaForm
                         ->label('Upload Icon / Logo')
                         ->image()
                         ->disk('cloudinary')
-                        ->acceptedFileTypes(['image/*'])
                         ->directory('social_media')
-                        ->visibility('cloudinary')
-                        ->formatStateUsing(fn ($state) => $state)
-                        ->moveFiles() 
+                        ->visibility('public')
+                        ->livewireUploadDisk('cloudinary') 
                         ->preserveFilenames()
-                        ->nullable(),
+                        ->imagePreviewHeight('250')
+                        ->loadingIndicatorPosition('left')
+                        ->required(),
 
                     Toggle::make('is_active')
                         ->label('Tampilkan di Website?')

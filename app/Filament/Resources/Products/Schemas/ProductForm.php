@@ -112,7 +112,8 @@ class ProductForm
                                 ->disk('cloudinary')
                                 ->directory('products')
                                 ->visibility('cloudinary')
-                                ->formatStateUsing(fn ($state) => $state)
+                                ->imagePreviewHeight('250')
+                                ->preserveFilenames()
                                 ->columnSpanFull(),
 
                             Toggle::make('is_active')

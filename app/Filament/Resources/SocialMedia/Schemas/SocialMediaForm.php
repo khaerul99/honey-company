@@ -73,7 +73,7 @@ class SocialMediaForm
                         ->image()
                         ->disk('cloudinary')
                         ->directory('social_media')
-                        ->visibility('public')
+                        ->visibility('cloudinary')
                         ->preserveFilenames()
                         ->imagePreviewHeight('250')
                         ->loadingIndicatorPosition('left')

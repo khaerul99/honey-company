@@ -74,11 +74,15 @@ class SocialMediaForm
                         ->disk('cloudinary')
                         ->directory('social_media')
                         ->visibility('public')
-                        ->livewireUploadDisk('cloudinary') 
                         ->preserveFilenames()
                         ->imagePreviewHeight('250')
                         ->loadingIndicatorPosition('left')
-                        ->required(),
+                        ->required()
+                        ->dehydrateStateUsing(function ($state) {
+                            if (!$state) return null;
+                            if (str_starts_with($state, 'http')) return $state;
+                            return Storage::disk('cloudinary')->url($state);
+                        }),
 
                     Toggle::make('is_active')
                         ->label('Tampilkan di Website?')

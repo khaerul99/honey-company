@@ -113,7 +113,6 @@ class ProductForm
                                 ->directory('products')
                                 ->visibility('cloudinary')
                                 ->formatStateUsing(fn ($state) => $state)
-                                ->maxSize(2048)
                                 ->columnSpanFull(),
 
                             Toggle::make('is_active')

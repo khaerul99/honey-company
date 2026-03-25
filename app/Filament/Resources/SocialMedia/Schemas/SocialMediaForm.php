@@ -77,12 +77,7 @@ class SocialMediaForm
                         ->preserveFilenames()
                         ->imagePreviewHeight('250')
                         ->loadingIndicatorPosition('left')
-                        ->required()
-                        ->dehydrateStateUsing(function ($state) {
-                            if (!$state) return null;
-                            if (str_starts_with($state, 'http')) return $state;
-                            return Storage::disk('cloudinary')->url($state);
-                        }),
+                        ->required(),
 
                     Toggle::make('is_active')
                         ->label('Tampilkan di Website?')

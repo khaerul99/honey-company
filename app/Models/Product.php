@@ -46,10 +46,10 @@ class Product extends Model
         }
     });
 
-    static::updating(function ($product) {
-        if ($product->isDirty('image')) {
-            Storage::disk('cloudinary')->delete($product->getOriginal('image'));
-        }
-    });
+    static::deleted(function ($product) {
+    if ($product->getRawOriginal('image')) { 
+        Storage::disk('cloudinary')->delete($product->getRawOriginal('image'));
+    }
+});
 }
 }

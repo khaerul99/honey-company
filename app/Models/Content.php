@@ -36,16 +36,18 @@ class Content extends Model
     {
         parent::booted();
 
-        static::deleted(function ($content) {
-            if ($content->image) {
-                Storage::disk('cloudinary')->delete($content->image);
-            }
-        });
+       
 
         static::updating(function ($content) {
-            if ($content->isDirty('image')) {
+            if ($content->isDirty('image') && $content->getOriginal('image')) {
                 Storage::disk('cloudinary')->delete($content->getOriginal('image'));
             }
         });
+
+        static::deleted(function ($content) {
+                if ($content->getRawOriginal('image')) { 
+                    Storage::disk('cloudinary')->delete($content->getRawOriginal('image'));
+                }
+            });
     }
 }

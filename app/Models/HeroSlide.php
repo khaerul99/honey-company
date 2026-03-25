@@ -30,17 +30,19 @@ class HeroSlide extends Model
 {
     parent::booted();
 
-    static::deleted(function ($heroSlide) {
-        if ($heroSlide->image) {
-            Storage::disk('cloudinary')->delete($heroSlide->image);
+  
+
+static::updating(function ($heroSlide) {
+        if ($heroSlide->isDirty('image') && $heroSlide->getOriginal('image')) {
+            Storage::disk('cloudinary')->delete($heroSlide->getOriginal('image'));
         }
     });
 
-    static::updating(function ($heroSlide) {
-    if ($heroSlide->isDirty('image')) {
-        Storage::disk('cloudinary')->delete($heroSlide->getOriginal('image'));
-    }
-});
+   static::deleted(function ($heroSlide) {
+        if ($heroSlide->getRawOriginal('image')) { 
+            Storage::disk('cloudinary')->delete($heroSlide->getRawOriginal('image'));
+        }
+    });
 }
 
     

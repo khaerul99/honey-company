@@ -32,16 +32,18 @@ class Post extends Model
     {
         parent::booted();
 
-        static::deleted(function ($post) {
-            if ($post->image) {
-                Storage::disk('cloudinary')->delete($post->image);
-            }
-        });
+        
 
         static::updating(function ($post) {
-            if ($post->isDirty('image')) {
-                Storage::disk('cloudinary')->delete($post->getOriginal('image'));
-            }
-        });
+        if ($post->isDirty('image') && $post->getOriginal('image')) {
+            Storage::disk('cloudinary')->delete($post->getOriginal('image'));
+        }
+    });
+
+   static::deleted(function ($post) {
+        if ($post->getRawOriginal('image')) { 
+            Storage::disk('cloudinary')->delete($post->getRawOriginal('image'));
+        }
+    });
     }
 }

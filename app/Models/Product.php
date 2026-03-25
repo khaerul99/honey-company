@@ -40,16 +40,16 @@ class Product extends Model
 {
     parent::booted();
 
-    static::deleted(function ($product) {
-        if ($product->image) {
-            Storage::disk('cloudinary')->delete($product->image);
+    static::updating(function ($product) {
+        if ($product->isDirty('image') && $product->getOriginal('image')) {
+            Storage::disk('cloudinary')->delete($product->getOriginal('image'));
         }
     });
 
-    static::deleted(function ($product) {
-    if ($product->getRawOriginal('image')) { 
-        Storage::disk('cloudinary')->delete($product->getRawOriginal('image'));
-    }
-});
+   static::deleted(function ($product) {
+        if ($product->getRawOriginal('image')) { 
+            Storage::disk('cloudinary')->delete($product->getRawOriginal('image'));
+        }
+    });
 }
 }

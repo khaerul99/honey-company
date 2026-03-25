@@ -30,16 +30,16 @@ class Gallery extends Model
     {
         parent::booted();
 
-        static::deleted(function ($gallery) {
-            if ($gallery->image) {
-                Storage::disk('cloudinary')->delete($gallery->image);
-            }
-        });
-
         static::updating(function ($gallery) {
-            if ($gallery->isDirty('image')) {
-                Storage::disk('cloudinary')->delete($gallery->getOriginal('image'));
-            }
-        });
+        if ($gallery->isDirty('image') && $gallery->getOriginal('image')) {
+            Storage::disk('cloudinary')->delete($gallery->getOriginal('image'));
+        }
+    });
+
+   static::deleted(function ($gallery) {
+        if ($gallery->getRawOriginal('image')) { 
+            Storage::disk('cloudinary')->delete($gallery->getRawOriginal('image'));
+        }
+    });
     }
 }

@@ -55,14 +55,7 @@ class Setting extends Model
     {
         parent::booted();
 
-        static::deleted(function ($setting) {
-            if ($setting->logo) {
-                Storage::disk('cloudinary')->delete($setting->logo);
-            }
-            if ($setting->about_us_image) {
-                Storage::disk('cloudinary')->delete($setting->about_us_image);
-            }
-        });
+       
 
         static::updating(function ($setting) {
             if ($setting->isDirty('logo') && $setting->getOriginal('logo')) { 
@@ -72,5 +65,14 @@ class Setting extends Model
                 Storage::disk('cloudinary')->delete($setting->getOriginal('about_us_image'));
             }
         });
+
+   static::deleted(function ($setting) {
+        if ($setting->getRawOriginal('logo')) { 
+            Storage::disk('cloudinary')->delete($setting->getRawOriginal('logo'));
+        }
+        if ($setting->getRawOriginal('about_us_image')) { 
+            Storage::disk('cloudinary')->delete($setting->getRawOriginal('about_us_image'));
+        }
+    });
     }
 }

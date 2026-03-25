@@ -30,15 +30,15 @@ class SocialMedia extends Model
     {
         parent::booted();
 
-        static::deleted(function ($socialMedia) {
-            if ($socialMedia->icon) {
-                Storage::disk('cloudinary')->delete($socialMedia->icon);
-            }
-        });
-
         static::updating(function ($socialMedia) {
             if ($socialMedia->isDirty('icon')) {
                 Storage::disk('cloudinary')->delete($socialMedia->getOriginal('icon'));
+            }
+        });
+
+        static::deleted(function ($socialMedia) {
+            if ($socialMedia->getRawOriginal('icon')) { 
+                Storage::disk('cloudinary')->delete($socialMedia->getRawOriginal('icon'));
             }
         });
     }

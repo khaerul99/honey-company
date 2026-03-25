@@ -71,7 +71,7 @@ class SocialMediaForm
                     FileUpload::make('icon')
                         ->label('Upload Icon / Logo')
                         ->image()
-                        ->disk()
+                        ->disk('cloudinary')
                         ->directory('social_media')
                         ->visibility('public')
                         ->preserveFilenames()

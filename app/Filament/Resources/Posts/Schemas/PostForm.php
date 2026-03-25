@@ -82,8 +82,7 @@ class PostForm
                         ->disk('cloudinary')
                         ->directory('posts') 
                         ->visibility('cloudinary')
-                        ->formatStateUsing(fn ($state) => $state)
-                        ->maxSize(2048)
+                        ->maxSize(5012)
                         ->columnSpanFull(),
 
                     RichEditor::make('content')

@@ -6,7 +6,7 @@
         <a href="{{ $sosmed->url }}" target="_blank" class="w-12 h-12 bg-white border border-amber-400 shadow-lg rounded-full flex items-center justify-center hover:scale-110 transition-transform group/item">
             {{-- Jika kamu simpan icon sebagai path gambar --}}
             @if($sosmed->icon)
-                <img src="{{ asset('storage/' . $sosmed->icon) }}" class="w-6 h-6 object-contain" alt="{{ $sosmed->platform_name }}">
+                <img src="{{ $sosmed->icon }}" class="w-6 h-6 object-contain" alt="{{ $sosmed->platform_name }}">
             @else
                 {{-- Fallback jika tidak ada gambar --}}
                 <span class="text-[10px] text-amber-600 font-bold uppercase">{{ substr($sosmed->platform_name, 0, 2) }}</span>
@@ -28,6 +28,6 @@
 <script>
     const fabButton = document.querySelector('.group');
     fabButton.addEventListener('click', function() {
-        this.classList.toggle('group-hover:opacity-100'); // Sesuai kebutuhan toggle class
+        this.classList.toggle('group-hover:opacity-100'); 
     });
 </script>
